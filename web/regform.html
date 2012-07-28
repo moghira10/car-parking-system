@@ -22,7 +22,7 @@ and open the template in the editor.
     </center>        
     <hr/>
     <h3><b>Registration</b></h3>
-        <form>
+    <form action="/ePark/ReqPark" method="POST">
             <table>
             <tr>
                 <td>P.No:</td><td><input type="text" name="pno"></td>
@@ -36,24 +36,18 @@ and open the template in the editor.
                 <td>Vehicle Model:</td><td><input type="text" name="model"></td>      
             </tr>
             <tr>
-                <td>Vehicle Paper No.:</td><td><input type="text" name="model"></td>      
+                <td>Vehicle Paper No.:</td><td><input type="text" name="paper"></td>      
             </tr>
             <tr><td><b>Driving License Details</b></td></tr>
              <tr>
-                <td>DL No.:</td><td><input type="text" name="dl"></td>
+                <td>DL No.:</td><td><input type="text" name="dlno"></td>
             </tr>
             <tr>
-                <td>DL Type:</td><td><input type="text" name="dl"></td>
+                <td>DL Type:</td><td><input type="text" name="dlty"></td>
             </tr>
              <tr>
-                <td>DL Expiry Date:</td><td><input type="date" name="model"></td>      
+                <td>DL Expiry Date:</td><td><input type="date" name="expd"></td>      
              </tr><tr></tr>
-            <tr>
-                <td>Password:</td><td><input type="password" name="pass"></td>
-            </tr>
-            <tr>
-                <td>Confirm Password:</td><td><input type="password" name="cpass"></td>
-           </tr>
            <tr>
                <td>
            <input type="Submit" value="Register">

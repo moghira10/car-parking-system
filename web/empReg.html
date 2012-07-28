@@ -17,27 +17,33 @@ and open the template in the editor.
     <font color="#3399FF" size="5px">
     <b> TATA STEEL </b></font><br><br>
     <hr/>
-     <strong><a href="index.jsp" target="_parent">Home</a> | <a href="regform.html" target="_parent">Registration</a> | Sign In</strong>
+     <strong><a href="index.jsp" target="_parent">Home</a> | <a href="regform.html" target="_parent">Registration</a> |<a href="login1.html" target="_parent"> Sign In</a></strong>
     
     <hr/>
-        <form>
+        </center>
+    <br>
+     <div style="position: absolute; right: 230px; top: 200px;">
+        <form action="/ePark/EmpReg" method="POST">
         <table frame="lhs">
-            <h3>Employee Registration</h3>
+            <thead><th><h3>Employee Registration</h3></th></thead>
             <tr><td>P.No:</td><td><input type="text" name="pno"></td></tr>
             <tr><td>Date Of Birth:</td><td><input type="date" name="dob"></td></tr>
             <tr><td>Department:</td><td>
-                    <select accesskey="d" >
-                        <option label="ITS" />
-                        <option label="RMH" />
-                        <option label="VIGIL" />
-                        <option label="HR" />
+                    <select name="department">
+                        <option value="its" label="ITS" />
+                        <option value="rmh" label="RMH" />
+                        <option value="vigil" label="VIGIL" />
+                        <option value="hr" label="HR" />
                     </select> </td></tr>
             <tr><td>Password:</td><td><input type="password" name="pass"></td></tr>
             <tr><td>Confirm Password:</td><td><input type="password" name="pass"></td></tr>
-        </table>
-            <input type="submit" value="Register">
-            <input type="submit" value="Reset">
+            </table>
+                <input type="submit" value="Register">
+                <input type="submit" value="Reset">
         </form>
-    </center>
-    </body>
+     </div>
+    <div style="position: absolute; left: 100px; top: 200px;">
+    <img src="pics/Tata-Steel-logo.jpg" width="470" height="300" alt="Tata-Steel-logo" border="2" />
+    </div>
+</body>
 </html>

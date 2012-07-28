@@ -10,8 +10,8 @@ and open the template in the editor.
     </head>
     <frameset rows="138,*" FRAMESPACING=0 BORDER=2>
         <frame src="main.html" name="main" scrolling="no">
-    <frameset cols="18,82"> 
-        <frame src="vigilLogin.html" name="main" height="100">
+    <frameset cols="23,77"> 
+        <frame src="signin.jsp" name="login" height="100">
         <frame src="intro.html" name="welcome">
         
     </frameset> 

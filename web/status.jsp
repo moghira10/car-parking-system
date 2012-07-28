@@ -14,6 +14,20 @@
         <title>JSP Page</title>
     </head>
     <body>
+         <center>
+        <div style="position: absolute; left: 00px; top: 20px;">
+             <img src="pics/tata2.jpg" width="60" height="50" alt="tata2"/></div>
+      
+        <font size="6px"><b>eCarParking System</b></font><br>
+    <font color="#3399FF" size="5px">
+    <b> TATA STEEL </b></font><br><br>
+    <hr/>
+    
+     <strong><a href="index.jsp" target="_parent">Home</a> | <a href="regform.html" target="_parent">Registration</a> | Sign In</strong>
+    </center>        
+    <hr/>
+  
+        <br>
         <h2>Quick Quote</h2>
         <% 
         
@@ -45,11 +59,11 @@
         
         
         
-        <form action="quick.jsp">
-            <div style="position: absolute; top:80px;right:00px;">  
+        <form action="status.jsp">
+            <div style="position: absolute; top:230px;right:00px;">  
           <img src="pics/jpeg.jpg" width="350" height="260" alt="quick"/>
             </div>
-          <div style="position: absolute; top:150px;right:120px">   
+          <div style="position: absolute; top:300px;right:120px">   
               <i>Check Status Instantly</i>
               <table>       
             

@@ -2,16 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package bookSpace;
+package serv;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.Date;
-import java.util.Random;
+import java.sql.*;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,9 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Moghira
  */
-public class ReqPark extends HttpServlet {
-    String rc;
-    int i;
+public class EmpReg extends HttpServlet {
+
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -38,67 +35,56 @@ public class ReqPark extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        int drand=0;
-        String pno=request.getParameter("pno");
-        String vno=request.getParameter("vhno");
-        String mod=request.getParameter("model");
-        String paper=request.getParameter("paper");
-        String dl=request.getParameter("dlno");
-        String dlt=request.getParameter("dlty");
-        String exp=request.getParameter("expd");
-        String qry="select Personal_No from epark.hr_master_table where Personal_No='"+pno+"'and Designation='designated'";
-        String insert="insert into epark.car_park_syst values(?,?,?,?,?,?,?,?,?,?)";
-      try{
+        String pnum;
+        int i = 0,j;
+        String dob;
+        
+        String pas;
+        String dept;
+        pnum=request.getParameter("pno");
+        
+        dob=request.getParameter("dob");
+        dept=request.getParameter("department");
+        pas=request.getParameter("pass");
+        String query;
+        query="insert into epark.login_details values(?,?,?,?)";
+        try{
         Class.forName("com.mysql.jdbc.Driver");
         Connection con = DriverManager.getConnection ("jdbc:mysql://localhost:3306/mysql","root","tiger");
         System.out.println("Connection Established!");
-        PreparedStatement st=con.prepareStatement(qry);
-        ResultSet rs=st.executeQuery();
-        while(rs.next())
-        {
-            String desPno=rs.getString(1);
-            if(desPno.equals(pno))
-            {   String pt="designated";
-                String pc="RMH0001";
-                String stat="p";
-               Random rand = new Random();  
-                drand = (int)(rand.nextDouble()*10000);
-                
-               rc= Integer.toString(drand);
-              
-                //System.out.println(exp);
-                 PreparedStatement pst = con.prepareStatement(insert);
-                     pst.setString(1, dl);
-                     pst.setString(2, pno);
-                     pst.setString(3, exp);
-                     pst.setString(4, pc);
-                     pst.setString(5, dlt);
-                     pst.setString(6, vno);
-                     pst.setString(7, mod);
-                     pst.setString(8, paper);
-                     pst.setString(9, pt);
-                     pst.setString(10, rc);
-                     pst.setString(11,stat);
-                     i= pst.executeUpdate();
-            }
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, pnum);
+        pst.setString(2, pas);
+        pst.setString(3, dept);
+        pst.setString(4, dob);
+        i=pst.executeUpdate();
+        System.out.println("Database Updated Successfully!");
         }
-    
-       
+        catch(ClassNotFoundException e){e.printStackTrace();}
+        catch(SQLException e){e.printStackTrace();}
+        try {
+            /*
+             * TODO output your page here. You may use following sample code.
+             */
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ReqPark</title>");            
+            out.println("<title>Employee Registration</title>");            
             out.println("</head>");
             out.println("<body>");
             if(i==0){
-            out.println("<b>Your Request cannot be sent.Try again later.</b>");}
-            else{
-              out.println("Your Request has been sent<br> Your Request Code is:<b>"+rc+"</b>");   
+                out.println("<h1>unexpexted error</h1>");   
             }
+            else{
+            out.println("<center><div style='position: absolute; left: 00px; top: 20px;'><img src='pics/tata2.jpg' width='60' height='50'/></div>");
+            out.println("<font size='6px'><b><i>e</i>CarParking System</b></font><br>");
+            out.println("<font color='#3399FF' size='5px'><b> TATA STEEL </b></font><br><br></center><hr/>");        
+            out.println("<b>Welcome to Tata Steel eCar Parking System</b><br>");
+            out.println("Thank you for registering with us.<br>Login to your account to register for a parking space<br><b>TATA STEEL</b>");
+            out.println("<br><a href='index.jsp' target='_parent'><b>Go Home-></b></a>");
+                    }
             out.println("</body>");
             out.println("</html>");
-        
-      }catch(Exception e){e.printStackTrace();}
-      finally {            
+        } finally {            
             out.close();
         }
     }
